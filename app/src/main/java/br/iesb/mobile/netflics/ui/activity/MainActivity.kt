@@ -1,9 +1,12 @@
 package br.iesb.mobile.netflics.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
+import androidx.navigation.ui.setupWithNavController
 import br.iesb.mobile.netflics.R
 import br.iesb.mobile.netflics.databinding.ActivityMainBinding
 import br.iesb.mobile.netflics.service.NetworkMonitor
@@ -13,7 +16,8 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 @WithFragmentBindings
-class MainActivity : AppCompatActivity(), NetFlicsActivity {
+class MainActivity : AppCompatActivity(), NetFlicsActivity, NetFlicsMainActivity {
+
 
     @Inject
     lateinit var networkMonitor: NetworkMonitor
@@ -35,6 +39,16 @@ class MainActivity : AppCompatActivity(), NetFlicsActivity {
 
     override fun hideLoading() {
         binding.loadingLayout.visibility = View.GONE
+    }
+
+    override fun showBottomNavigation() {
+        binding.bvMainBar.animate().setInterpolator(AccelerateDecelerateInterpolator())
+            .translationY(0f)
+    }
+
+    override fun hideBottomNavigation() {
+        binding.bvMainBar.animate().setInterpolator(AccelerateDecelerateInterpolator())
+            .translationY(150f)
     }
 
 }

@@ -56,6 +56,10 @@
     <string name="profile">Perfil</string>
     <string name="error_loading_profiles">Não foi possível carregar os perfis da conta.</string>
 
+    <!-- Home -->
+    <string name="home">Inicio</string>
+    <string name="coming_soon">Em breve</string>
+    <string name="downloads">Downloads</string>
 
 
 </resources>

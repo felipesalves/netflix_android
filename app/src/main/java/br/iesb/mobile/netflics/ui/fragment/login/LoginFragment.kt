@@ -9,9 +9,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import br.iesb.mobile.netflics.NetFlicsApp
 import br.iesb.mobile.netflics.R
 import br.iesb.mobile.netflics.databinding.FragmentLoginBinding
-import br.iesb.mobile.netflics.domain.LoginResult
+import br.iesb.mobile.netflics.domain.AppResult
+import br.iesb.mobile.netflics.ui.activity.NetFlicsActivity
 import br.iesb.mobile.netflics.viewmodel.LoginViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -48,12 +50,15 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewmodel.result.observe(viewLifecycleOwner) {
+            val activity = requireActivity() as? NetFlicsActivity
+            activity?.hideLoading()
+
             when (it) {
-                is LoginResult.Success -> {
+                is AppResult.Success -> {
                     requireActivity().finish()
                     findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
                 }
-                is LoginResult.Error -> Toast.makeText(context, it.message, Toast.LENGTH_LONG)
+                is AppResult.Error -> Toast.makeText(context, it.message, Toast.LENGTH_LONG)
                     .show()
             }
         }
@@ -61,6 +66,8 @@ class LoginFragment : Fragment() {
 
     @Suppress("UNUSED_PARAMETER")
     fun login(v: View) {
+        val activity = requireActivity() as? NetFlicsActivity
+        activity?.showLoading()
         viewmodel.login()
     }
 

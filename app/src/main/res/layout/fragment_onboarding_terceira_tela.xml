@@ -7,14 +7,13 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="?attr/backgroundColor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/backgroundColor"
-        tools:context=".ui.fragment.onboarding.screen.OnboardingSecondScreenFragment">
-
+        tools:context=".ui.fragment.onboarding.screen.OnboardingTerceiraTelaFragment">
 
         <View
-            android:id="@+id/vwGradient2"
+            android:id="@+id/vwGradient3"
             android:layout_width="0dp"
             android:layout_height="500dp"
             android:background="?gradientBackground"
@@ -23,31 +22,8 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/ivOnboardingPage2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/onboarding2" />
-
         <TextView
-            android:id="@+id/tvSubtitleSecondPage"
-            style="?subtitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="120dp"
-            android:elevation="5dp"
-            android:text="@string/onboarding_second_page_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tvTitleSecondPage"
+            android:id="@+id/tvTitleThirdPage"
             style="?titleStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,10 +34,33 @@
             android:lines="2"
             android:text="@string/onboarding_second_page_title"
             android:textAlignment="center"
-            app:layout_constraintBottom_toTopOf="@+id/tvSubtitleSecondPage"
+            app:layout_constraintBottom_toTopOf="@+id/tvSubtitleThirdPage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSubtitleThirdPage"
+            style="?subtitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="120dp"
+            android:elevation="5dp"
+            android:text="@string/onboarding_second_page_subtitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/tvTitleThirdPage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/onboarding_3" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

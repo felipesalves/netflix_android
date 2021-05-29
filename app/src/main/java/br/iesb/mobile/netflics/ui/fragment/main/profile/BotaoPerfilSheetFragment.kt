@@ -7,28 +7,28 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
-import br.iesb.mobile.netflics.databinding.FragmentProfileBottomSheetBinding
-import br.iesb.mobile.netflics.domain.AppResult
+import br.iesb.mobile.netflics.databinding.FragmentPerfilBotaoSheetBinding
+import br.iesb.mobile.netflics.domain.AppResultado
 import br.iesb.mobile.netflics.domain.Profile
-import br.iesb.mobile.netflics.viewmodel.ProfileViewModel
+import br.iesb.mobile.netflics.viewmodel.PerfilViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileBottomSheetFragment(
+class BotaoPerfilSheetFragment(
     private val profile: Profile?,
     private val callback: (profile: Profile?) -> Unit
 ) : BottomSheetDialogFragment() {
 
-    private lateinit var binding: FragmentProfileBottomSheetBinding
-    private val viewmodel: ProfileViewModel by viewModels()
+    private lateinit var binding: FragmentPerfilBotaoSheetBinding
+    private val viewmodel: PerfilViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentProfileBottomSheetBinding.inflate(inflater, container, false)
+        binding = FragmentPerfilBotaoSheetBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.fragment = this
         binding.viewmodel = viewmodel
@@ -37,8 +37,8 @@ class ProfileBottomSheetFragment(
 
         viewmodel.result.observe(viewLifecycleOwner) {
             when (it) {
-                is AppResult.Success -> callback(viewmodel.currentProfile?.value)
-                is AppResult.Error -> Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+                is AppResultado.Success -> callback(viewmodel.currentProfile?.value)
+                is AppResultado.Error -> Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
             }
             dismiss()
         }

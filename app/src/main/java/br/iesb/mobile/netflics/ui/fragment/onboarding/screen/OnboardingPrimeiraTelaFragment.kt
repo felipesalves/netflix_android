@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import br.iesb.mobile.netflics.databinding.FragmentOnboardingThirdScreenBinding
+import br.iesb.mobile.netflics.databinding.FragmentOnboardingPrimeiraTelaBinding
 
-class OnboardingThirdScreenFragment : Fragment() {
-    private lateinit var binding: FragmentOnboardingThirdScreenBinding
+class OnboardingPrimeiraTelaFragment : Fragment() {
+    private lateinit var binding: FragmentOnboardingPrimeiraTelaBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentOnboardingThirdScreenBinding.inflate(inflater, container, false)
+        binding = FragmentOnboardingPrimeiraTelaBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
         return binding.root

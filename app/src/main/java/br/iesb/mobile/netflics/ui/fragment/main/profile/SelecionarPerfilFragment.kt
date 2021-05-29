@@ -15,26 +15,26 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.navigation.fragment.findNavController
 import br.iesb.mobile.netflics.R
-import br.iesb.mobile.netflics.databinding.FragmentSelectProfileBinding
-import br.iesb.mobile.netflics.domain.AppResult
+import br.iesb.mobile.netflics.databinding.FragmentSelecionarPerfilBinding
+import br.iesb.mobile.netflics.domain.AppResultado
 import br.iesb.mobile.netflics.ui.activity.NetFlicsActivity
 import br.iesb.mobile.netflics.ui.activity.NetFlicsMainActivity
-import br.iesb.mobile.netflics.ui.component.AnimatedProfile
-import br.iesb.mobile.netflics.viewmodel.ProfileViewModel
+import br.iesb.mobile.netflics.ui.component.AnimacaoPerfil
+import br.iesb.mobile.netflics.viewmodel.PerfilViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SelectProfileFragment : Fragment(), LifecycleObserver {
+class SelecionarPerfilFragment : Fragment(), LifecycleObserver {
 
-    private lateinit var binding: FragmentSelectProfileBinding
-    private val viewmodel: ProfileViewModel by activityViewModels()
+    private lateinit var binding: FragmentSelecionarPerfilBinding
+    private val viewmodel: PerfilViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = FragmentSelectProfileBinding.inflate(inflater, container, false)
+        binding = FragmentSelecionarPerfilBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.fragment = this
         binding.viewmodel = viewmodel
@@ -74,7 +74,7 @@ class SelectProfileFragment : Fragment(), LifecycleObserver {
         activity?.showLoading()
         viewmodel.result.observe(viewLifecycleOwner) {
             activity?.hideLoading()
-            if (it is AppResult.Error) {
+            if (it is AppResultado.Error) {
                 Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
             }
             this.binding.profileMotionLayout.transitionToEnd()
@@ -122,15 +122,15 @@ class SelectProfileFragment : Fragment(), LifecycleObserver {
 
     @Suppress("UNUSED_PARAMETER")
     fun animation(v: View) {
-        (v as AnimatedProfile).profileAnimatedCounter = !v.profileAnimatedCounter
+        (v as AnimacaoPerfil).profileAnimatedCounter = !v.profileAnimatedCounter
         val ac = (activity as? NetFlicsMainActivity) ?: return
         if (v.profileAnimatedCounter) ac.showBottomNavigation() else ac.hideBottomNavigation()
     }
 
-    private fun edit(v: AnimatedProfile) {
+    private fun edit(v: AnimacaoPerfil) {
         val index = (v.tag as String).toInt()
         viewmodel.selectProfile(index)
-        ProfileBottomSheetFragment(viewmodel.currentProfile?.value?.copy()) { profile ->
+        BotaoPerfilSheetFragment(viewmodel.currentProfile?.value?.copy()) { profile ->
             when (index) {
                 1 -> viewmodel.profile1.value = profile
                 2 -> viewmodel.profile2.value = profile

@@ -17,7 +17,7 @@ import androidx.core.graphics.drawable.toBitmap
 import br.iesb.mobile.netflics.R
 
 
-class AnimatedProfile @JvmOverloads constructor(
+class AnimacaoPerfil @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0,
 ) : View(context, attrs, defStyleAttr) {
 
@@ -353,7 +353,7 @@ class AnimatedProfile @JvmOverloads constructor(
          *
          * @param name The profile name that was clicked.
          */
-        fun onClick(v: AnimatedProfile)
+        fun onClick(v: AnimacaoPerfil)
     }
 
 }

@@ -5,17 +5,17 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import br.iesb.mobile.netflics.R
-import br.iesb.mobile.netflics.domain.AppResult
+import br.iesb.mobile.netflics.domain.AppResultado
 import br.iesb.mobile.netflics.domain.Profile
-import br.iesb.mobile.netflics.interactor.ProfileInteractor
+import br.iesb.mobile.netflics.interactor.PerfilInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(
+class PerfilViewModel @Inject constructor(
     app: Application,
-    private val interactor: ProfileInteractor
+    private val interactor: PerfilInteractor
 ) : AndroidViewModel(app) {
 
     var currentProfile: MutableLiveData<Profile>? = null
@@ -25,13 +25,13 @@ class ProfileViewModel @Inject constructor(
     val profile3 = MutableLiveData(Profile(name = app.getString(R.string.new_profile)))
     val profile4 = MutableLiveData(Profile(name = app.getString(R.string.new_profile)))
 
-    val result = MutableLiveData<AppResult<Nothing>?>()
+    val result = MutableLiveData<AppResultado<Nothing>?>()
 
     fun loadProfiles() {
         viewModelScope.launch {
             val data = interactor.loadProfiles()
             result.value = when (data) {
-                is AppResult.Success -> {
+                is AppResultado.Success -> {
                     data.value?.forEach {
                         when (it.id) {
                             "Profile1" -> profile1.value = Profile(it.id, it.name)
@@ -40,9 +40,9 @@ class ProfileViewModel @Inject constructor(
                             else -> profile4.value = Profile(it.id, it.name)
                         }
                     }
-                    AppResult.Success()
+                    AppResultado.Success()
                 }
-                is AppResult.Error -> data
+                is AppResultado.Error -> data
             }
         }
     }

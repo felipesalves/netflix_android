@@ -9,12 +9,9 @@ import androidx.navigation.fragment.findNavController
 import br.iesb.mobile.netflics.R
 import br.iesb.mobile.netflics.databinding.FragmentOnboardingBinding
 import br.iesb.mobile.netflics.ui.adapter.OnboardingAdapter
-import br.iesb.mobile.netflics.ui.fragment.onboarding.screen.OnboardingFirstScreenFragment
-import br.iesb.mobile.netflics.ui.fragment.onboarding.screen.OnboardingSecondScreenFragment
-import br.iesb.mobile.netflics.ui.fragment.onboarding.screen.OnboardingThirdScreenFragment
-import com.google.firebase.auth.FirebaseAuth
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import br.iesb.mobile.netflics.ui.fragment.onboarding.screen.OnboardingPrimeiraTelaFragment
+import br.iesb.mobile.netflics.ui.fragment.onboarding.screen.OnboardingSegundaTelaFragment
+import br.iesb.mobile.netflics.ui.fragment.onboarding.screen.OnboardingTerceiraTelaFragment
 
 class OnboardingFragment : Fragment() {
 
@@ -31,9 +28,9 @@ class OnboardingFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val pages = arrayListOf(
-            OnboardingFirstScreenFragment(),
-            OnboardingSecondScreenFragment(),
-            OnboardingThirdScreenFragment()
+            OnboardingPrimeiraTelaFragment(),
+            OnboardingSegundaTelaFragment(),
+            OnboardingTerceiraTelaFragment()
         )
 
         binding.vpOnboarding.adapter = OnboardingAdapter(

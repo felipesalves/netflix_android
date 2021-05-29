@@ -9,10 +9,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import br.iesb.mobile.netflics.NetFlicsApp
 import br.iesb.mobile.netflics.R
 import br.iesb.mobile.netflics.databinding.FragmentLoginBinding
-import br.iesb.mobile.netflics.domain.AppResult
+import br.iesb.mobile.netflics.domain.AppResultado
 import br.iesb.mobile.netflics.ui.activity.NetFlicsActivity
 import br.iesb.mobile.netflics.viewmodel.LoginViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -54,11 +53,11 @@ class LoginFragment : Fragment() {
             activity?.hideLoading()
 
             when (it) {
-                is AppResult.Success -> {
+                is AppResultado.Success -> {
                     requireActivity().finish()
                     findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
                 }
-                is AppResult.Error -> Toast.makeText(context, it.message, Toast.LENGTH_LONG)
+                is AppResultado.Error -> Toast.makeText(context, it.message, Toast.LENGTH_LONG)
                     .show()
             }
         }

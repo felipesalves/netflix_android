@@ -5,7 +5,7 @@
     <data>
         <variable
             name="fragment"
-            type="br.iesb.mobile.netflics.ui.fragment.main.navigation.ComingSoonFragment" />
+            type="br.iesb.mobile.netflics.ui.fragment.main.navigation.EmBreveFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

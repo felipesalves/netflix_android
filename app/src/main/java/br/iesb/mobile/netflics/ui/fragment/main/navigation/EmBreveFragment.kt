@@ -5,18 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import br.iesb.mobile.netflics.databinding.FragmentComingSoonBinding
+import br.iesb.mobile.netflics.databinding.FragmentBemVindoBinding
 
-class ComingSoonFragment : Fragment() {
+class EmBreveFragment : Fragment() {
 
-    private lateinit var binding: FragmentComingSoonBinding
+    private lateinit var binding: FragmentBemVindoBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentComingSoonBinding.inflate(inflater, container, false)
+        binding = FragmentBemVindoBinding.inflate(inflater, container, false)
         binding.fragment = this
         binding.lifecycleOwner = this
 

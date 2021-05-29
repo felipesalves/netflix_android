@@ -5,11 +5,11 @@
     <data>
         <variable
             name="fragment"
-            type="br.iesb.mobile.netflics.ui.fragment.main.profile.ProfileBottomSheetFragment" />
+            type="br.iesb.mobile.netflics.ui.fragment.main.profile.BotaoPerfilSheetFragment" />
 
         <variable
             name="viewmodel"
-            type="br.iesb.mobile.netflics.viewmodel.ProfileViewModel" />
+            type="br.iesb.mobile.netflics.viewmodel.PerfilViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

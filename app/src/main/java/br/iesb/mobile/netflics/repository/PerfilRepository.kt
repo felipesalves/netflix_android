@@ -1,20 +1,18 @@
 package br.iesb.mobile.netflics.repository
 
-import br.iesb.mobile.netflics.domain.AppResult
+import br.iesb.mobile.netflics.domain.AppResultado
 import br.iesb.mobile.netflics.domain.Profile
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-class ProfileRepository @Inject constructor(
+class PerfilRepository @Inject constructor(
     private val firestore: FirebaseFirestore,
 ) {
 
-    suspend fun createOrUpdateProfile(p: Profile): AppResult<Nothing> = suspendCoroutine { nextStep ->
+    suspend fun createOrUpdateProfile(p: Profile): AppResultado<Nothing> = suspendCoroutine { nextStep ->
         val data = hashMapOf(
             "id" to p.id,
             "name" to p.name
@@ -23,15 +21,15 @@ class ProfileRepository @Inject constructor(
             .set(data)
             .addOnCompleteListener { op ->
                 val res = if (op.isSuccessful) {
-                    AppResult.Success()
+                    AppResultado.Success()
                 } else {
-                    AppResult.Error(op.exception?.localizedMessage, op.exception)
+                    AppResultado.Error(op.exception?.localizedMessage, op.exception)
                 }
                 nextStep.resume(res)
             }
     }
 
-    suspend fun loadProfiles(): AppResult<List<Profile>> = suspendCoroutine { nextStep ->
+    suspend fun loadProfiles(): AppResultado<List<Profile>> = suspendCoroutine { nextStep ->
         firestore.collection("profile")
             .get()
             .addOnCompleteListener { op ->
@@ -43,9 +41,9 @@ class ProfileRepository @Inject constructor(
                             list.add(p)
                         }
                     }
-                    AppResult.Success(list)
+                    AppResultado.Success(list)
                 } else {
-                    AppResult.Error(op.exception?.localizedMessage, op.exception)
+                    AppResultado.Error(op.exception?.localizedMessage, op.exception)
                 }
                 nextStep.resume(res)
             }

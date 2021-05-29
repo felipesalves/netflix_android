@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/backgroundColor"
-        tools:context=".ui.fragment.onboarding.screen.OnboardingFirstScreenFragment">
+        tools:context=".ui.fragment.onboarding.screen.OnboardingPrimeiraTelaFragment">
 
         <ImageView
             android:id="@+id/ivOnboardingFirst"
@@ -22,7 +22,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/onboarding1" />
+            app:srcCompat="@drawable/onboarding_1" />
 
         <View
             android:id="@+id/vwGradient"

@@ -8,15 +8,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.iesb.mobile.netflics.R
-import br.iesb.mobile.netflics.databinding.FragmentForgotPasswordBinding
-import br.iesb.mobile.netflics.domain.AppResult
+import br.iesb.mobile.netflics.databinding.FragmentEsqueceuSenhaBinding
+import br.iesb.mobile.netflics.domain.AppResultado
 import br.iesb.mobile.netflics.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ForgotPasswordFragment : Fragment() {
+class EsquecerSenhaFragment : Fragment() {
 
-    private lateinit var binding: FragmentForgotPasswordBinding
+    private lateinit var binding: FragmentEsqueceuSenhaBinding
     private val viewmodel: LoginViewModel by viewModels()
 
     override fun onCreateView(
@@ -24,7 +24,7 @@ class ForgotPasswordFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentForgotPasswordBinding.inflate(inflater, container, false)
+        binding = FragmentEsqueceuSenhaBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.fragment = this
         binding.viewmodel = viewmodel
@@ -37,11 +37,11 @@ class ForgotPasswordFragment : Fragment() {
 
         viewmodel.result.observe(viewLifecycleOwner) {
             when (it) {
-                is AppResult.Success -> {
+                is AppResultado.Success -> {
                     requireActivity().finish()
                     Toast.makeText(context, getText(R.string.reset_password_email_sent), Toast.LENGTH_LONG).show()
                 }
-                is AppResult.Error -> Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+                is AppResultado.Error -> Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
             }
         }
     }

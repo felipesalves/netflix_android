@@ -5,18 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import br.iesb.mobile.netflics.databinding.FragmentHomeBinding
+import br.iesb.mobile.netflics.databinding.FragmentPrincipalBinding
 
-class HomeFragment : Fragment() {
+class PrincipalFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentPrincipalBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentPrincipalBinding.inflate(inflater, container, false)
         binding.fragment = this
         binding.lifecycleOwner = this
 

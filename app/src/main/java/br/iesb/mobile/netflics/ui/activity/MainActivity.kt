@@ -31,6 +31,10 @@ class MainActivity : AppCompatActivity(), NetFlicsActivity, NetFlicsMainActivity
         networkMonitor.observe(this) { connected ->
             binding.networkLayout.visibility =  if (!connected) View.VISIBLE else View.GONE
         }
+
+        val navigationController = Navigation.findNavController(this, R.id.mainNavigationFragment)
+        binding.bvMainBar.setupWithNavController(navigationController)
+
     }
 
     override fun showLoading() {
